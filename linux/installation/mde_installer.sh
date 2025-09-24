@@ -812,7 +812,7 @@ install_on_debian()
 
         ### Fetch the gpg key ###
 
-        if { [ "$DISTRO" = "ubuntu" ] && [ "$VERSION" = "24.04" ]; } || { [ "$DISTRO" = "debian" ] && [ "$VERSION" = "12" ]; }; then
+        if { [ "$DISTRO" = "ubuntu" ] && [ "$VERSION" = "24.04" ]; } || { [ "$DISTRO" = "debian" ] && { [ "$VERSION" = "12" ] || [ "$VERSION" = "13" ]; } }; then
             if [ ! -f /usr/share/keyrings/microsoft-prod.gpg ]; then
                 run_quietly "curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg" "unable to fetch the gpg key" $ERR_FAILED_REPO_SETUP
             fi
